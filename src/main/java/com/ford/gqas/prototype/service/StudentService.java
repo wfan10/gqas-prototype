@@ -1,15 +1,37 @@
 package com.ford.gqas.prototype.service;
 
 import java.util.List;
-import com.ford.gqas.prototype.model.StudentDTO;
+import com.ford.gqas.prototype.model.*;
 
 public interface StudentService {
 	
-	StudentDTO findById( long id );
-	StudentDTO findByName( String name );
-	void saveStudent( StudentDTO student );
-	void updateStudent( StudentDTO student );
-	void deleteStudent( long id );
+	// return a list of students
 	List<StudentDTO> findAllStudents();
-	public boolean isStudentExist( StudentDTO student );
+	
+	// Return student by id or name
+	StudentDTO findStudentById( long id );
+	
+	// Return the next id from sequence
+	long getNextStudentId();
+	
+	// use session and transaction to save student and address
+	void saveStudent( long id, StudentDTO student, AddressDTO address );
+	
+	// use transaction to delete student and address
+	void deleteStudent( long id );
+	
+	// update student only
+	void updateStudent( long id, StudentDTO student );
+	
+	// Return address by id 
+	AddressDTO getAddressById( long id );
+	
+	// update student address only
+	void updateAddress( long id, AddressDTO address );
+
+	// return a state lookup table
+	List<StateinfoDTO> listStates();
+	
+	// return a state info object by id
+	StateinfoDTO getStateInfo( int stateid );
 }

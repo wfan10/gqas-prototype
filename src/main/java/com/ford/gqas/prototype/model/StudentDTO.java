@@ -1,10 +1,11 @@
 package com.ford.gqas.prototype.model;
 
+import java.io.Serializable;
 
 // Note that we do not have to use prototype annotation for this class.
 // Reason is we create a new instance in the *DAO class for each SQL query.  
 // @Scope("prototype") 
-public class StudentDTO {
+public class StudentDTO implements Serializable{
 
 	private long id;
 	private String name;
